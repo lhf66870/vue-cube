@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <style>
+      /* 
+       * 当鼠标移到元素上时，元素开始向右移动，开始比较慢，之后则比较快，移开时按原曲线回到原点 
+       * 当我们不为 transition 添加 cubic-bezier 或是其他 timing-function 时，默认的速度曲线是 ease
+      */
+    /* .animation {
+      width: 50px;
+      height: 50px;
+      background-color: #ed3;
+      -webkit-transition:  all 2s;
+           -o-transition:  all 2s;
+              transition:  all 2s;
+    }
+    .animation:hover {
+      -webkit-transform:  translateX(100px);
+          -ms-transform:  translateX(100px);
+           -o-transform:  translateX(100px);
+              transform:  translateX(100px);
+    } */
+
+    /*
+    * 看到动画在执行过程中有一段很缓慢的移动，前后的速度相似，此时的运动曲线是：
+    */
+    .animation {
+      width: 50px;
+      height: 50px;
+      background-color: #ed3;
+      -webkit-transition:  all 2s  cubic-bezier(.17, .86, .73, .14);
+           -o-transition:  all 2s  cubic-bezier(.17, .86, .73, .14);
+              transition:  all 2s  cubic-bezier(.17, .86, .73, .14);
+    }
+    .animation:hover {
+      -webkit-transform:  translateX(100px);
+          -ms-transform:  translateX(100px);
+           -o-transform:  translateX(100px);
+              transform:  translateX(100px);
+    }
+    /* @keyframes */
+    .list {
+        width:100px;
+        height:100px;
+        background: red;
+        animation: dropdown 5s linear infinite;
+    }
+    @keyframes dropdown {
+        0% { margin-top: 0px;}
+        /** 暂停效果 */
+        20% { margin-top: -100px;}
+        40% { margin-top: 0px;}
+        60% { margin-top: 100px;}
+        80% { margin-top: 0px;}
+        100% { margin-top: -100px;}
+    }
+
+    .div1 {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        position: relative;
+        margin-top:100px;
+    
+    }
+    
+    .animation1 {
+                animation: upin 2s ease;
+        -webkit-animation: upin 2s ease;
+    }
+ 
+    .animation2 {
+                animation:beat .93s infinite ease ;
+        -webkit-animation:beat .93s infinite ease ;
+    }
+    
+    @keyframes upin{
+        0% {
+            opacity: 0;
+            transform: translateY(-100%)
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+    
+    @-webkit-keyframes upin{
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(-100%)
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translateY(0)
+        }
+    }
+    
+    @keyframes beat {
+        0% {-webkit-transform: scale(1)}
+        15% {-webkit-transform: scale(1.2)}
+        30% {-webkit-transform: scale(1)}
+        55% {-webkit-transform: scale(1.1)}
+        100% {-webkit-transform: scale(1)}
+    }
+    
+    @-webkit-keyframes beat {
+        0% {-webkit-transform: scale(1)}
+        15% {-webkit-transform: scale(1.2)}
+        30% {-webkit-transform: scale(1)}
+        55% {-webkit-transform: scale(1.1)}
+        100% {-webkit-transform: scale(1)}
+    }
+  </style>
+</head>
+<body>
+  <div class="animation"></div>
+  <div class="list">666</div>
+  <div id="animationDiv" class="animation1 div1"></div>
+</body>
+</html>

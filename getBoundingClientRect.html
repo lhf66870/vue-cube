@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            margin:110% auto 0 auto;
+            width:100px;
+            height:100px;
+            border: 1px solid yellow;
+            background: red;
+            /* margin: auto;ssss */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>
+<script>
+    var el = document.querySelector(".box");
+    var rect = el.getBoundingClientRect();
+    console.log('====================================');
+    console.log(rect);
+    console.log('====================================');
+
+    var el2 = document.querySelector(".box2");
+    var rect2 = el2.getBoundingClientRect();
+    console.log('====================================');
+    console.log(rect2);
+    console.log('====================================');
+</script>
